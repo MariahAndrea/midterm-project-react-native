@@ -3,19 +3,25 @@ import { StyleSheet } from 'react-native';
 export const Colors = {
     light: {
         background: '#ffffff',
+        title: '#5f4086',
         text: '#000000',
+        subtext: '#5f4086',
         card: '#ffffff',
+        tag: '#dfd5f0',
         border: '#C6C6C8',
-        primary: '#007AFF', 
-        secondary: '#28A745',
+        primary: '#815ba1', 
+        secondary: '#54ad50',
     },
     dark: {
         background: '#19191a',
+        title: '#a36adc',
         text: '#ffffff',
+        subtext: '#d1d1d1',
         card: '#19191a',
+        tag: '#4a3b57',
         border: '#38383A',
-        primary: '#0A84FF', 
-        secondary: '#30D158',
+        primary: '#7c658f', 
+        secondary: '#54ad50',
     }
     
 };
@@ -25,10 +31,10 @@ export const getGlobalStyles = (isDarkMode: boolean) => {
   return StyleSheet.create({
     header: { 
         backgroundColor: theme.card, 
-        padding: 15, 
+        padding: 15,
         flexDirection: 'row', 
         justifyContent: 'space-between', 
-        alignItems: 'center' 
+        alignItems: 'center',
     },
     screen: { 
         flex: 1, 
@@ -46,7 +52,7 @@ export const getGlobalStyles = (isDarkMode: boolean) => {
     title: { 
         fontSize: 18, 
         fontWeight: 'bold', 
-        color: theme.text 
+        color: theme.title 
     },
     text: { 
         fontSize: 14, 
@@ -98,5 +104,22 @@ export const getGlobalStyles = (isDarkMode: boolean) => {
         color: theme.text,
         height: '100%',
     },
+    tagContainer: { 
+        flexDirection: 'row', 
+        flexWrap: 'wrap', 
+        marginTop: 10,
+        gap: 6 
+    },
+    tag: { 
+        backgroundColor: theme.tag, 
+        paddingHorizontal: 10, 
+        paddingVertical: 4, 
+        borderRadius: 16, 
+    },
+    tagText: { 
+        fontSize: 12, 
+        color: theme.subtext, 
+        fontWeight: '500' 
+    }
   });
 };
