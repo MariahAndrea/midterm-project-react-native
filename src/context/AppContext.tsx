@@ -5,12 +5,12 @@ export interface Job {
     title: string;
     companyName: string;
     jobType: string;
-    minSalary: string;
-    maxSalary: string;
+    salary: string;
     workModel: string;
     currency: string;
     description: string;
     locations: string;
+    tags: string;
 }
 
 interface AppContextType {

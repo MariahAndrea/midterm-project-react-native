@@ -18,9 +18,10 @@ export const useFetch = () => {
             title: j.title || j.job_title || "Untitled Job",
             company: j.company || j.company_name || "Unknown Company",
             locations: j.locations || j.job_location || "Unspecified Location",
-            minSalary: j.minSalary || j.salary || "Not Disclosed",
-            maxSalary: j.maxSalary || j.salary || "Not Disclosed",
-            currency: j.currency 
+            salary: j.minSalary ? `$${j.minSalary} - ${j.maxSalary}` : "Undisclosed",
+            currency: j.currency,
+            description: j.description,
+            tags: j.tags 
         }));
             setJobs(formatted);
             setLoading(false);

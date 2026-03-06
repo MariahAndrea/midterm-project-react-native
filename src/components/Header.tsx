@@ -1,31 +1,82 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Switch, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 import { useAppContext } from '../context/AppContext';
 import { Colors } from '../styles/style';
-import { useNavigation } from '@react-navigation/native';
 
 export const Header = () => {
-    const { isDarkMode, setIsDarkMode, savedJobs } = useAppContext();
-    const navigation = useNavigation<any>();
-    const theme = isDarkMode ? Colors.dark : Colors.light;
+  const { isDarkMode, setIsDarkMode, savedJobs } = useAppContext();
+  const navigation = useNavigation<any>();
+  const theme = isDarkMode ? Colors.dark : Colors.light;
 
-    return(
-        <View style={[style.header, { backgroundColor : theme.card, borderBottomColor: theme.border }]}>
-            <Text style={{ fontSize: 22, fontWeight: 'bold', color: theme.text }}>JobFinder</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
-                <TouchableOpacity onPress={() => navigation.navigate('SavedJobs')}>
-                    <Text style={{ color: theme.primary, fontWeight: '600' }}>Saved ({savedJobs.length})</Text>
-                </TouchableOpacity>
-                <Switch value={ isDarkMode} onValueChange={setIsDarkMode} />
-            </View>
-        </View>
-    )
+  return (
+    <View style={[styles.navBar, { backgroundColor: theme.card, borderBottomColor: theme.border }]}>
+      <Text style={[styles.storeName, { color: theme.text }]}>JobSeek</Text>
+
+        <View style={styles.rightSection}>
+        
+        {/* Saved Jobs with Badge */}
+        <TouchableOpacity style={styles.savedButton} onPress={() => navigation.navigate('SavedJobs')}>
+            <FontAwesome name="bookmark" size={24} color={theme.text} />
+            {savedJobs.length > 0 && (
+                <View style={styles.badge}>
+                <Text style={styles.badgeText}>{savedJobs.length}</Text>
+                </View>
+            )}
+        </TouchableOpacity>
+
+        {/* Theme Toggle */}
+        <TouchableOpacity onPress={() => setIsDarkMode(!isDarkMode)} style={styles.iconBtn}>
+          <Feather name={isDarkMode ? 'sun' : 'moon'} size={24} color={theme.text} />
+        </TouchableOpacity>
+
+      </View>
+    </View>
+  );
 };
 
-const style = StyleSheet.create({
-    header: {
+const styles = StyleSheet.create({
+    navBar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    }
-})
+        paddingHorizontal: 16,
+        paddingTop: 50, 
+        paddingBottom: 15,
+        borderBottomWidth: 1,
+    },
+    storeName: { 
+        fontSize: 20, 
+        fontWeight: 'bold' 
+    },
+    rightSection: { 
+        flexDirection: 'row', 
+        alignItems: 'center' 
+    },
+    iconBtn: { 
+        
+        flexDirection: 'row', 
+        alignItems: 'center',
+        marginRight: 0,
+    },
+    savedButton: { 
+        marginRight: 20 
+    },
+    badge: {
+        position: 'absolute',
+        right: -8,
+        top: -8,
+        backgroundColor: '#FF3B30',
+        borderRadius: 10,
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    badgeText: { 
+        color: 'white', 
+        fontSize: 10, 
+        fontWeight: 'bold' 
+    },
+});
