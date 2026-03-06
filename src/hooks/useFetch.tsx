@@ -18,7 +18,7 @@ export const useFetch = () => {
             title: j.title || j.job_title || "Untitled Job",
             company: j.company || j.company_name || "Unknown Company",
             locations: j.locations || j.job_location || "Unspecified Location",
-            salary: j.minSalary ? `$${j.minSalary} - ${j.maxSalary}` : "Undisclosed",
+            salary: j.minSalary ? `${j.minSalary} - ${j.maxSalary} ${j.currency}` : "Undisclosed",
             currency: j.currency,
             description: j.description,
             tags: j.tags 
