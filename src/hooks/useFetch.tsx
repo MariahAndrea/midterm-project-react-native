@@ -16,7 +16,11 @@ export const useFetch = () => {
             ...j,
             id: uuidv4(),
             title: j.title || j.job_title || "Untitled Job",
-            company: j.company || j.company_name || "Unknown Company"
+            company: j.company || j.company_name || "Unknown Company",
+            locations: j.locations || j.job_location || "Unspecified Location",
+            minSalary: j.minSalary || j.salary || "Not Disclosed",
+            maxSalary: j.maxSalary || j.salary || "Not Disclosed",
+            currency: j.currency 
         }));
             setJobs(formatted);
             setLoading(false);

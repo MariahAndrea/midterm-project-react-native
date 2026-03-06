@@ -75,11 +75,28 @@ export const getGlobalStyles = (isDarkMode: boolean) => {
     },
     btnText: { 
         color: '#FFF', 
-        fontWeight: 'bold' },
+        fontWeight: 'bold' 
+    },
     error: { 
         color: '#FF3B30', 
         fontSize: 12, 
         marginBottom: 5 
-    }
+    },
+    searchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: theme.card, 
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: theme.border,
+        paddingHorizontal: 12,
+        marginBottom: 15,
+        height: 45,
+    },
+    searchInput: {
+        flex: 1, 
+        color: theme.text,
+        height: '100%',
+    },
   });
 };

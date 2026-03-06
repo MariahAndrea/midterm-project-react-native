@@ -31,8 +31,9 @@ const CustomHeader = () => {
 
 const MainLayout = () => {
   const { isDarkMode } = useAppContext();
+  const themeBg = isDarkMode ? '#000' : '#F2F2F7';
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#000' : '#F2F2F7' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: themeBg }}>
       <CustomHeader />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="JobFinder" component={JobFinderScreen} />
